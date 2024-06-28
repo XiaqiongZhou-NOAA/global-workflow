@@ -132,6 +132,7 @@ ocean_model, "Heat_PmE",  "Heat_PmE",      "@[MOM6_OUTPUT_DIR]/ocn_lead1%4yr%2mo
 #"gfs_dyn",     "pfhy",        "preshy",       "fv3_history",    "all",  .false.,  "none",  2
 #"gfs_dyn",     "pfnh",        "presnh",       "fv3_history",    "all",  .false.,  "none",  2
 "gfs_dyn",     "w",           "dzdt",         "fv3_history",    "all",  .false.,  "none",  2
+"gfs_dyn",     "omga",           "omga",         "fv3_history",    "all",  .false.,  "none",  2
 "gfs_dyn",     "ps",          "pressfc",      "fv3_history",    "all",  .false.,  "none",  2
 "gfs_dyn",     "hs",          "hgtsfc",       "fv3_history",    "all",  .false.,  "none",  2
 "gfs_phys",    "refl_10cm",   "refl_10cm",    "fv3_history",    "all",  .false.,  "none",  2
