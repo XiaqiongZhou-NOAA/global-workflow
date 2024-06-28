@@ -1,0 +1,25 @@
+#! /usr/bin/env bash                                                                                                                                                                                                                     
+
+########## config.extractvars ##########
+# Extractvars specific
+
+echo "BEGIN: config.extractvars"
+
+. "${EXPDIR}/config.resources" extractvars
+
+export atmosextract=1
+export ocniceextract=1
+export wavextract=1
+
+export compress_ocn=0
+export compress_ice=0                                                                                                                                                                      
+
+export FHMAX=120
+export FHMAXHF=60
+export FHOUTHF=6
+export FHOUTLF=12
+
+export ocn_dataformat="netcdf"
+export ice_dataformat="netcdf"
+
+echo "END: config.extractvars"
