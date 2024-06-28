@@ -63,23 +63,6 @@ if [[ -z ${env_job} ]]; then
     exit 1
 fi
 
-##############################################
-# make temp directory
-##############################################
-export DATA=${DATA:-"${DATAROOT}/${jobid}"}
-if [[ ${WIPE_DATA:-YES} == "YES" ]]; then
-    rm -rf "${DATA}"
-fi
-mkdir -p "${DATA}"
-cd "${DATA}" || ( echo "FATAL [${BASH_SOURCE[0]}]: ${DATA} does not exist"; exit 1 )
-
-
-##############################################
-# Run setpdy and initialize PDY variables
-##############################################
-export cycle="t${cyc}z"
-setpdy.sh
-source ./PDY
 
 
 ##############################################
@@ -104,6 +87,23 @@ for config in "${configs[@]:-''}"; do
 done
 
 
+##############################################
+# make temp directory
+##############################################
+export DATA=${DATA:-"${DATAROOT}/${jobid}"}
+if [[ ${WIPE_DATA:-YES} == "YES" ]]; then
+    rm -rf "${DATA}"
+fi
+mkdir -p "${DATA}"
+cd "${DATA}" || ( echo "FATAL [${BASH_SOURCE[0]}]: ${DATA} does not exist"; exit 1 )
+
+
+##############################################
+# Run setpdy and initialize PDY variables
+##############################################
+export cycle="t${cyc}z"
+setpdy.sh
+source ./PDY
 ##########################################
 # Source machine runtime environment
 ##########################################

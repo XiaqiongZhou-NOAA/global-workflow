@@ -3,15 +3,17 @@
 source "${HOMEgfs}/ush/preamble.sh"
 
 if (( 10#${ENSMEM:-0} > 0 )); then
+  source "${HOMEgfs}/ush/jjob_header.sh" -e "efcs" -c "base fcst efcs"
   export DATAjob="${DATAROOT}/${RUN}efcs${ENSMEM}.${PDY:-}${cyc}"
   export DATA="${DATAjob}/${jobid}"
-  source "${HOMEgfs}/ush/jjob_header.sh" -e "efcs" -c "base fcst efcs"
 else
+  source "${HOMEgfs}/ush/jjob_header.sh" -e "fcst" -c "base fcst"
   export DATAjob="${DATAROOT}/${RUN}fcst.${PDY:-}${cyc}"
   export DATA="${DATAjob}/${jobid}"
-  source "${HOMEgfs}/ush/jjob_header.sh" -e "fcst" -c "base fcst"
 fi
 
+if [[ ! -d "${DATA}" ]]; then mkdir -p "${DATA}"; fi
+if [[ ! -d "${DATAjob}" ]]; then mkdir -p "${DATAjob}"; fi
 # Create the directory to hold restarts and output from the model in stmp
 export DATArestart="${DATAjob}/restart"
 if [[ ! -d "${DATArestart}" ]]; then mkdir -p "${DATArestart}"; fi
