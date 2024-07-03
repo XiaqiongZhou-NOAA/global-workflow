@@ -90,7 +90,11 @@ for MEMDIR in "${MEMDIR_ARRAY[@]}"; do
       YMD=${PDY} HH=${cyc} declare_from_tmpl COM_ATMOS_ANALYSIS:COM_ATMOS_ANALYSIS_TMPL
       [[ ! -d "${COM_ATMOS_ANALYSIS}" ]] && mkdir -p "${COM_ATMOS_ANALYSIS}"
       src="${BASE_CPLIC}/${CPL_ATMIC:-}/${PDY}${cyc}/${MEMDIR}/atmos/${DTG_PREFIX}.fv3_perturbation.nc"
-      tgt="${COM_ATMOS_ANALYSIS}/${RUN}.t00z.atminc.nc"
+      if [[ ${EXP_WARM_START:-".false."} = ".true." ]]; then
+        tgt="${COM_ATMOS_ANALYSIS}/${RUN}.t00z.atminc.nc"
+      else
+        tgt="${COM_ATMOS_INPUT}/${RUN}.t00z.atminc.nc"
+      fi
       ${NCP} "${src}" "${tgt}"
       rc=${?}
       ((rc != 0)) && error_message "${src}" "${tgt}" "${rc}"

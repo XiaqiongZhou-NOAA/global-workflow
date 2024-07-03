@@ -27,6 +27,10 @@ else
         local use_restart_time=".false."
     fi
 fi
+if [[ ${MARINE_COLD} == T ]]; then
+   local runtype="initial"
+   local use_restart_time=".true."
+fi
 
 # Get correct MPI options for NPROC and grid
 local processor_shape=${cice6_processor_shape:-'slenderX2'}

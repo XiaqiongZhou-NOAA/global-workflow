@@ -5,15 +5,19 @@ set -u
 # CI yamls can be found at ${HOMEgfs}/ci/cases/{pr/weekly}/
 ####################################
 # Code
-REPO=NeilBarton-NOAA && HASH=SFS_baseline 
+export IDATE=1997110100
+
 HOMEgfs=${1:-${PWD}/../}
 YAML=${2:-${HOMEgfs}/RUN/SFS.yaml}
 export HPC_ACCOUNT=marine-cpu
 
-WORKDIR=/work/noaa/marine/${USER}/
+########################
+# for hera
+WORKDIR=/scratch2/NCEPDEV/stmp3/${USER}
+export TOPICDIR=/scratch2/NCEPDEV/stmp3/Neil.Barton/ICs
+
 export TOPEXPDIR=${WORKDIR}/RUNS
 export TOPCOMROOT=${WORKDIR}/RUNS/COMROOT
-export TOPICDIR=/work/noaa/marine/nbarton/ICs
 
 ########################
 # Check Code

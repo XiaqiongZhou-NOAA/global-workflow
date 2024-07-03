@@ -3,16 +3,16 @@ experiment:
   mode: forecast-only
 
 arguments:
-  idate: 2000050100
-  edate: 2000050100
+  idate: {{ 'IDATE' | getenv }} 
+  edate: {{ 'IDATE' | getenv }}
   pslot: {{ 'pslot' | getenv }}
-  app: S2SA
+  app: S2S
   resdetatmos: 96
   resensatmos: 96
   resdetocean: 1
   start: 'cold'
   gfs_cyc: 1
-  nens: 10
+  nens: 1
   comroot: {{ 'TOPCOMROOT' | getenv }}
   expdir: {{ 'TOPEXPDIR' | getenv }} 
   yaml: {{ HOMEgfs }}/RUN/SFS_options.yaml

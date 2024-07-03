@@ -10,7 +10,7 @@ base:
   REPLAY_ICS: "YES"
   ACCOUNT: {{ 'HPC_ACCOUNT' | getenv }} 
   HPSS_PROJECT: "emc-marine"
-  BASE_CPLIC: {{ 'TOPICDIR' | getenv }}/REPLAY_ICs/C96mx100
+  BASE_CPLIC: {{ 'TOPICDIR' | getenv }}/REPLAY_ICs/TEST
 fcst:
   TYPE: "hydro"
   MONO: "mono"

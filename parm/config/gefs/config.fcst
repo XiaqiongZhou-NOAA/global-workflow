@@ -271,5 +271,12 @@ fi
 # Remember config.efcs will over-ride these values for ensemble forecasts
 # if these variables are re-defined there.
 # Otherwise, the ensemble forecast will inherit from config.fcst
+export MARINE_COLD=T
+if [[ ${MARINE_COLD} == T ]]; then
+    export MOM6_INPUT_TEMPLATE="${HOMEgfs}/RUN/MOM_input_coldstart_${OCNRES}.IN"
+    export MOM6_RESTART_SETTING='n'
+    export MOM6_USE_LI2016="False" # set to False for restart reproducibility
+    export use_coldstart="true"
+fi
 
 echo "END: config.fcst"
