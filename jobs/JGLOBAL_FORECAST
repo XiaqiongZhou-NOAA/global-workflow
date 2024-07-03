@@ -15,7 +15,7 @@ fi
 if [[ ! -d "${DATA}" ]]; then mkdir -p "${DATA}"; fi
 if [[ ! -d "${DATAjob}" ]]; then mkdir -p "${DATAjob}"; fi
 # Create the directory to hold restarts and output from the model in stmp
-export DATArestart="${DATAjob}/restart"
+export DATArestart="${DATAjob}/restart/${MEMDIR}"
 if [[ ! -d "${DATArestart}" ]]; then mkdir -p "${DATArestart}"; fi
 export DATAoutput="${DATAjob}/output"
 if [[ ! -d "${DATAoutput}" ]]; then mkdir -p "${DATAoutput}"; fi
@@ -118,6 +118,7 @@ fi
 # Remove the Temporary working directory
 ##########################################
 cd "${DATAROOT}" || true
-[[ "${KEEPDATA}" == "NO" ]] && rm -rf "${DATA}" "${DATArestart}"  # do not remove DATAjob. It contains DATAoutput
+[[ "${KEEPDATA}" == "NO" ]] && rm -rf "${DATA}"   # do not remove DATAjob. It contains DATAoutput
+[[ "${KEEPDATArestart}" == "NO" ]] && rm -rf "${DATArestart}"  # do not remove DATAjob. It contains DATAoutput
 
 exit 0
