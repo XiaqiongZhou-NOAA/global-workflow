@@ -15,7 +15,7 @@ case "${CASE}" in
     export CPL_WAVIC=""
     export CPL_MEDIC=""
     ;;
-  "C96")
+  "C96" | "C192")
     export CPL_ATMIC=""
     export CPL_ICEIC=""
     export CPL_OCNIC=""
