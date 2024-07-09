@@ -7,6 +7,7 @@ base:
   FHMAX_GFS: 120
   FHMAX_HF_GFS: 0
   KEEPDATA: "NO"
+  KEEPDATArestart: "YES"
   REPLAY_ICS: "YES"
   FLTFILEGFS: "postxconfig-NT-SFS.txt"
   FLTFILEGFSF00: "postxconfig-NT-SFS.txt"
