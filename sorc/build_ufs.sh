@@ -8,8 +8,9 @@ APP="S2SWA"
 CCPP_SUITES="FV3_GFS_v17_p8_ugwpv1,FV3_GFS_v17_coupled_p8_ugwpv1,FV3_global_nest_v1"  # TODO: does the g-w need to build with all these CCPP_SUITES?
 PDLIB="ON"
 HYDRO="ON"
+BIT32="OFF"
 
-while getopts ":da:fj:vw" option; do
+while getopts ":da:fj:vwp" option; do
   case "${option}" in
     d) BUILD_TYPE="Debug";;
     a) APP="${OPTARG}";;
@@ -17,6 +18,7 @@ while getopts ":da:fj:vw" option; do
     j) BUILD_JOBS="${OPTARG}";;
     v) export BUILD_VERBOSE="YES";;
     w) PDLIB="OFF";;
+    p) BIT32="ON";;
     :)
       echo "[${BASH_SOURCE[0]}]: ${option} requires an argument"
       ;;
@@ -31,7 +33,7 @@ cd "${cwd}/ufs_model.fd"
 source "./tests/detect_machine.sh"
 source "./tests/module-setup.sh"
 
-MAKE_OPT="-DAPP=${APP} -D32BIT=ON -DCCPP_SUITES=${CCPP_SUITES}"
+MAKE_OPT="-DAPP=${APP} -D32BIT=${BIT32} -DCCPP_SUITES=${CCPP_SUITES}"
 [[ ${PDLIB:-"OFF"} = "ON" ]] && MAKE_OPT+=" -DPDLIB=ON"
 [[ ${HYDRO:-"OFF"} = "ON" ]] && MAKE_OPT+=" -DHYDRO=ON"
 if [[ ${BUILD_TYPE:-"Release"} = "DEBUG" ]] ; then

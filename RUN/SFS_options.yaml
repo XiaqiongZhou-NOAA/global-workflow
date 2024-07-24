@@ -13,7 +13,7 @@ base:
   FLTFILEGFSF00: "postxconfig-NT-SFS.txt"
   ACCOUNT: {{ 'HPC_ACCOUNT' | getenv }} 
   HPSS_PROJECT: "emc-marine"
-  BASE_CPLIC: {{ 'TOPICDIR' | getenv }}/REPLAY_ICs/TEST
+  BASE_CPLIC: {{ 'TOPICDIR' | getenv }}/REPLAY_ICs/C96mx100
 fcst:
   TYPE: "hydro"
   MONO: "mono"

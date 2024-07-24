@@ -5,7 +5,7 @@ set -u
 # CI yamls can be found at ${HOMEgfs}/ci/cases/{pr/weekly}/
 ####################################
 # Code
-export IDATE=1997110100
+export IDATE=1994050100
 
 HOMEgfs=${1:-${PWD}/../}
 YAML=${2:-${HOMEgfs}/RUN/SFS.yaml}
