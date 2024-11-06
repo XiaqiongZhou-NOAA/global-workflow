@@ -11,7 +11,6 @@ arguments:
   resensatmos: 96
   resdetocean: 1
   start: 'cold'
-  gfs_cyc: 1
   nens: 10
   comroot: {{ 'RUNTESTS' | getenv }}/COMROOT
   expdir: {{ 'RUNTESTS' | getenv }}/EXPDIR
