@@ -207,7 +207,6 @@ case ${imp_physics} in
         else
             export dddmp=0.
 	    fi
-        export dddmp=0.1
         export d4_bg=0.12
         ;;
     11) # GFDL
