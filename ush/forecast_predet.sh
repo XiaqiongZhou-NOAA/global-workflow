@@ -337,6 +337,10 @@ FV3_predet(){
       hord_mt=${hord_mt_hydro_mono:-"10"}
       hord_xx=${hord_xx_hydro_mono:-"10"}
       hord_dp=-${hord_xx_nh_nonmono:-"-10"}
+      kord_tm=${kord_tm_hydro_mono:-"-12"}
+      kord_mt=${kord_mt_hydro_mono:-"12"}
+      kord_wz=${kord_wz_hydro_mono:-"12"}
+      kord_tr=${kord_tr_hydro_mono:-"12"}
     fi
   else  # non-monotonic options
     d_con=${d_con_nonmono:-"1."}
@@ -349,10 +353,6 @@ FV3_predet(){
       hord_mt=${hord_mt_hydro_nonmono:-"10"}
       hord_xx=${hord_xx_hydro_nonmono:-"10"}
       hord_dp=${hord_xx_hydro_mono:-"10"}
-      kord_tm=${kord_tm_hydro_mono:-"-12"}
-      kord_mt=${kord_mt_hydro_mono:-"12"}
-      kord_wz=${kord_wz_hydro_mono:-"12"}
-      kord_tr=${kord_tr_hydro_mono:-"12"}
     fi
   fi
 
