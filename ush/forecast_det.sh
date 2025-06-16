@@ -120,6 +120,33 @@ UFS_det(){
 
       warm_start=".true."
       echo "All restarts found for '${RERUN_DATE}', RERUN='${RERUN}', warm_start='${warm_start}'"
+      
+            # Optional: clean up older restart files now that latest restart is found
+      echo "Cleaning up old restart files before ${RERUN_DATE}..."
+
+      # Remove older FV3_RESTART files
+      find "${DATArestart}/FV3_RESTART" -type f ! -name "${RERUN_DATE:0:8}.${RERUN_DATE:8:2}0000.*" -exec rm -f {} +
+
+      # Remove older CMEPS_RESTART files
+      if [[ "${cplflx}" == ".true." ]]; then
+        find "${DATArestart}/CMEPS_RESTART" -type f ! -name "ufs.cpld.cpl.r.${RERUN_DATE:0:4}-${RERUN_DATE:4:2}-${RERUN_DATE:6:2}-$(to_seconds ${RERUN_DATE:8:2}0000).nc" -exec rm -f {} +
+      fi
+
+      # Remove older MOM6_RESTART files
+      if [[ "${cplflx}" == ".true." ]]; then
+        find "${DATArestart}/MOM6_RESTART" -type f ! -name "${RERUN_DATE:0:8}.${RERUN_DATE:8:2}0000.*" -exec rm -f {} +
+      fi
+
+      # Remove older CICE_RESTART files
+      if [[ "${cplice}" == ".true." ]]; then
+        find "${DATArestart}/CICE_RESTART" -type f ! -name "cice_model.res.${RERUN_DATE:0:4}-${RERUN_DATE:4:2}-${RERUN_DATE:6:2}-$(to_seconds ${RERUN_DATE:8:2}0000).nc" -exec rm -f {} +
+      fi
+
+      # Remove older WW3_RESTART files
+      if [[ "${cplwav}" == ".true." ]]; then
+        find "${DATArestart}/WW3_RESTART" -type f ! -name "${RERUN_DATE:0:8}.${RERUN_DATE:8:2}0000.restart.ww3.nc" -exec rm -f {} +
+      fi
+
       break
     fi
 
