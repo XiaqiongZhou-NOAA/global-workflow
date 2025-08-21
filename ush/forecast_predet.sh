@@ -41,7 +41,11 @@ FV3_coldstarts(){
   # Create an array of chgres-ed FV3 files
   local fv3_input_files tile_files
   fv3_input_files=(gfs_ctrl.nc)
-  tile_files=(gfs_data sfc_data)
+  if [[ "${EXP_ECMWF_ICS}" == ".true." ]]; then
+   tile_files=(sfc_data)
+  else
+   tile_files=(gfs_data sfc_data)
+  fi
   local nn tt
   for (( nn = 1; nn <= ntiles; nn++ )); do
     for tt in "${tile_files[@]}"; do
@@ -406,7 +410,7 @@ FV3_predet(){
   mountain=".false."
   warm_start=".false."
   read_increment=".false."
-  res_latlon_dynamics='""'
+  res_latlon_dynamics=${res_latlon_dynamics:-'""'}
   increment_file_on_native_grid=".false."
 
   # Stochastic Physics Options
@@ -470,6 +474,11 @@ FV3_predet(){
   FNSOCC=${FNSOCC:-"${FIXorog}/${CASE}/sfc/${CASE}.mx${OCNRES}.soil_color.tileX.nc"}
   FNABSC=${FNABSC:-"${FIXorog}/${CASE}/sfc/${CASE}.mx${OCNRES}.maximum_snow_albedo.tileX.nc"}
   FNSMCC=${FNSMCC:-"${FIXgfs}/am/global_soilmgldas.statsgo.t${JCAP}.${LONB}.${LATB}.grb"}
+
+  if [[ "${EXP_ECMWF_ICS:-}" == ".true." ]]; then
+    cpreq "$ICSDIR_ECMWF/global_hyblev.l${LEVS}.txt" "${DATA}"
+  fi
+
 
   # If the appropriate resolution fix file is not present, use the highest resolution available (T1534)
   if [[ ! -f "${FNSMCC}" ]]; then

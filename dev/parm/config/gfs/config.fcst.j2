@@ -314,6 +314,15 @@ elif [[ "${RUN}" =~ "gfs" ]] ; then # GFS cycle specific parameters
     export DO_LAND_IAU=".false."
 
 fi
+if [[ "$EXP_ECMWF_ICS" = ".true." ]]; then
+ #To run ecmwf_ic inline
+    export external_eta=.false.
+    export ecmwf_ic=.true.
+    export nggps_ic=.false.
+    export res_latlon_dynamics="'./INPUT/ifs.nc'"
+    export npz_type="'input'"
+    export fv_eta_file="'global_hyblev.l128.txt'"
+fi
 
 # This is used to ensure that the orography in the land restart file matches the orography
 export CHECK_LAND_RESTART_OROG="{{ CHECK_LAND_RESTART_OROG }}"

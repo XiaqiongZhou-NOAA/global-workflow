@@ -21,6 +21,9 @@ FV3_postdet() {
     for fv3_file in ${file_list}; do
       cpreq "${COMIN_ATMOS_INPUT}/${fv3_file}" "${DATA}/INPUT/${fv3_file}"
     done
+    if [[ "${EXP_ECMWF_ICS}" == ".true." ]]; then
+      cpreq "${COMIN_ATMOS_INPUT}/ifs.nc" "${DATA}/INPUT/."
+     fi
 
   # warm start case
   elif [[ "${warm_start}" == ".true." ]]; then

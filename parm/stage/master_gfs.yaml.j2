@@ -144,7 +144,11 @@
 {% endfilter %}
 {% else %} # cold start
 {% filter indent(width=4) %}
+{% if EXP_ECMWF_ICS %}
+{% include "atmosphere_ecmwf_cold.yaml.j2" %}
+{% else %} # cold start
 {% include "atmosphere_cold.yaml.j2" %}
+{% endif %}
 {% endfilter %}
 {% endif %}
 
