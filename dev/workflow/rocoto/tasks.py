@@ -35,7 +35,7 @@ class Tasks:
                    'postsnd', 'awips', 'awips_20km_1p0deg', 'fbwind', 'npoess',
                    'gempak', 'gempakmeta', 'gempakmetancdc', 'gempakncdcupapgif', 'gempakpgrb2spec', 'npoess_pgrb2_0p5deg',
                    'waveawipsbulls', 'waveawipsgridded', 'wavegempak', 'waveinit',
-                   'wavepostbndpnt', 'wavepostbndpntbll', 'wavepostpnt', 'wavepostsbs', 'waveprep']
+                   'wavepostbndpnt', 'wavepostbndpntbll', 'wavepostpnt', 'wavepostsbs', 'waveprep', 'wave_stat', 'wave_stat_pnt']
 
     def __init__(self, app_config: AppConfig, run: str) -> None:
 
@@ -503,6 +503,9 @@ class Tasks:
             if task_constraint:
                 native += ' --constraint=' + task_constraint
 
+        else:
+            raise NotImplementedError(f"Scheduler type '{scheduler}' has not been implemented!")
+
         # Finally, construct and return the task resource dictionary
         task_resource = {'account': account,
                          'walltime': walltime,
@@ -511,6 +514,7 @@ class Tasks:
                          'ppn': ppn,
                          'threads': threads,
                          'memory': memory,
+                         'scheduler': scheduler,
                          'native': native,
                          'queue': task_queue,
                          'partition': task_partition}

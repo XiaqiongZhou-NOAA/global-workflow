@@ -35,6 +35,7 @@ Table of Contents
    :maxdepth: 3
 
    development.rst
+   testing.rst
    components.rst
    jobs.rst
    hpc.rst
@@ -44,5 +45,4 @@ Table of Contents
    noaa_csp.rst
    errors_faq.rst
    globus_arch.rst
-   configure.rst
    gcafs.rst
